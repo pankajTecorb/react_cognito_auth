@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-var accessToken = "eyJraWQiOiJrXC9aTVFhU0ZWcWlRZ1VkZEh6RzBFRkJsbWxPb09qOXc2NldxXC81VGpKRlE9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMTczYmQ0YS0wMDIxLTcwZDEtYmE2Yi02ZmZkMTQ5ZTc2MTIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGgtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aC0xX2x1WFM0Qm94dSIsImNsaWVudF9pZCI6IjdhdWl0dTgzdnJzMm9xaDdlN25taTd2Z3IxIiwib3JpZ2luX2p0aSI6ImM3MWMyOGM4LWI0ZmItNDljMS1iNTdkLTFiMjBjMWI1ZTAwZiIsImV2ZW50X2lkIjoiMmI0MjJkNzItODRmNi00NmEwLTkyMjQtYjU5NzA0NDc3NDlmIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTY4NDgyNjA4OSwiZXhwIjoxNjg0ODI5Njg5LCJpYXQiOjE2ODQ4MjYwODksImp0aSI6IjcyZWFmNTU1LWJlYjItNDg5YS05MWJiLWM5MzcxMjdkNjAzZCIsInVzZXJuYW1lIjoiMDE3M2JkNGEtMDAyMS03MGQxLWJhNmItNmZmZDE0OWU3NjEyIn0.mifhZyV1ELx67K6wqoQQaDreuKDqQW3p_gLtBrEh6uz9-ZQ4-4TCSMM62pJc7BXZ9AzFXNq37Wvj4EQGLGx64oe8rsc6jM593SovPQy00lCy4AChz4DSx9KDWStulJ0b1YdzCySrTCNerci32eBb6-7z23DDmyRphRNrN7UUQ8jPN2rUv54PH3glovbzjO8iShk1djhIIRNcf3cmqYkyZL4Bv3_JlPT00Yod7b483PeMrMXF-dDN5MfPCdX0Iip0UXIDNEP-WmsxFCW4wtqDX1ep9-0bXa4iwQcCYsh8fsRjs1lKoCIAJojZklrQccWb2-aMZSzU02yhBoL_lhjqgg"
 
 interface User {
   id: string;
@@ -33,7 +32,7 @@ const UserList = () => {
           email: localStorage.email,
           accessToken: localStorage.AccessToken,
         };
-        const response: any = await fetch('https://aws-cognito-auth-tecorb.onrender.com/api/v1/user/cognito/list', {
+          await fetch('https://aws-cognito-auth-tecorb.onrender.com/api/v1/user/cognito/list', {
           method: 'POST',
           body: JSON.stringify({
             requestData
@@ -61,30 +60,30 @@ const UserList = () => {
   }, []);
 
 
-  const deleteUser = async (email: string) => {
-    try {
-      const response = await fetch('https://aws-cognito-auth-tecorb.onrender.com/api/v1/user/cognito/delete', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json();
-      if (data.code === 200) {
-        //alert(data.message);
-        toast.success(data.message)
-        window.location.reload();
-      } else {
-        //alert(data.message);
-        toast.error(data.message)
-      }
-    } catch (error:any) {
-      console.error('Error occurred during Delete user:', error);
-      //alert('Error occurred during OTP Delete user: ' + error);
-      toast.error(error)
-    }
-  };
+  // const deleteUser = async (email: string) => {
+  //   try {
+  //     const response = await fetch('https://aws-cognito-auth-tecorb.onrender.com/api/v1/user/cognito/delete', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ email }),
+  //     });
+  //     const data = await response.json();
+  //     if (data.code === 200) {
+  //       //alert(data.message);
+  //       toast.success(data.message)
+  //       window.location.reload();
+  //     } else {
+  //       //alert(data.message);
+  //       toast.error(data.message)
+  //     }
+  //   } catch (error:any) {
+  //     console.error('Error occurred during Delete user:', error);
+  //     //alert('Error occurred during OTP Delete user: ' + error);
+  //     toast.error(error)
+  //   }
+  // };
 
   const handleLogout = async () => {
     try {

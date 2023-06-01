@@ -88,7 +88,7 @@ const VerifyEmail = () => {
                   required
                 />
               </div>
-              <a href="#" onClick={handleResendOTP} className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
+              <a  onClick={handleResendOTP} className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Resend OTP
               </a>
               <button

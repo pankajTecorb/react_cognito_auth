@@ -15,7 +15,7 @@ const ChangePassword = () => {
         const accessToken = localStorage.getItem('AccessToken');
 
         if (!accessToken) {
-            navigate('/');
+            window.location.replace('/')
         }
     }, []);
 
